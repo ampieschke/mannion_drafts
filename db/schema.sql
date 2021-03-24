@@ -7,7 +7,8 @@ CREATE TABLE players (
   id INT PRIMARY KEY AUTO_INCREMENT KEY NOT NULL,
   player_name VARCHAR(100) NULL,
   nfl_team VARCHAR(100) NULL,
-  position VARCHAR(4) NULL
+  position VARCHAR(4) NULL,
+  drafted BOOLEAN DEFAULT false
 );
 
 CREATE TABLE league (

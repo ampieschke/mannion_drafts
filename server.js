@@ -1,23 +1,27 @@
-// const express = require("express");
-// // const exphbs = require("express-handlebars");
-// const mysql = require("mysql");
+//Dependencies
+const express = require("express");
+const exphbs = require("express-handlebars");
 
-// const app = express();
+//Create instance of Express App
+const app = express();
 
-// app.use(express.static("public"));
+//Set the PORT of the application
+const PORT = process.env.PORT || 8000;
 
-// const PORT = process.env.PORT || 8080;
+//Serve staticcontent for the app from the 'public' directory
+app.use(express.static("public"));
 
-// app.use(express.urlencoded({ extended: true }));
-// app.use(express.json());
+//Parse application body as JSON
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-// // app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-// // app.set("view engine", "handlebars");
+//Set Handlebars
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
-// const routes = require("./controllers/draft_controller.js");
+//Import routes and give the server access
+require("./router/htmlroutes.js")(app);
+require("./router/apiRoutes.js")(app);
 
-// app.use(routes);
-
-// db.sequelize.sync().then(() => {
-//   app.listen(PORT, () => console.log(`App listening on PORT ${PORT}`));
-// });
+//Start the server
+app.listen(PORT, () => console.log(`App listening on PORT ${PORT}`));
