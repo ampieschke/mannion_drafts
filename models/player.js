@@ -6,8 +6,13 @@ const Sequelize = require("sequelize");
 // sequelize (lowercase) references our connection to the DB.
 const sequelize = require("../config/connection.js");
 
-// Syncs with DB
-draft.sync();
+const Player = sequelize.define("player", {
+  player_name: Sequelize.STRING,
+  nfl_team: Sequelize.STRING,
+  position: Sequelize.STRING,
+});
 
-// Makes the Chirp Model available for other files (will also create a table)
-module.exports = players;
+// Syncs with DB
+Player.sync();
+
+module.exports = Player;

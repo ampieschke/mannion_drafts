@@ -1,12 +1,11 @@
+const Player = require("../models/player.js");
+
 module.exports = (app) => {
-  app.get("/api/:players?", (req, res) => {
-    if (req.params.players) {
-      Player.findOne({
-        where: {
-          routeName: req.params.players,
-        },
-      }).then((result) => res.json(result));
-    }
-    res.json({ success: true });
+  app.get("/api/search/:player", (req, res) => {
+    Player.findAll({
+      where: {
+        player_name: req.params.name,
+      },
+    }).then((results) => res.json(results));
   });
 };
