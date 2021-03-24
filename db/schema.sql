@@ -1,12 +1,31 @@
-DROP DATABASE IF EXISTS player_pool;
-CREATE database player_pool;
+DROP DATABASE IF EXISTS draft;
+CREATE database draft;
 
-USE player_pool;
+USE draft;
 
 CREATE TABLE players (
-  rank INT NOT NULL,
+  id INT PRIMARY KEY AUTO_INCREMENT KEY NOT NULL,
   player_name VARCHAR(100) NULL,
+  nfl_team VARCHAR(100) NULL,
+  position VARCHAR(4) NULL
+);
+
+CREATE TABLE league (
+  id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  user VARCHAR(100) NULL,
   team VARCHAR(100) NULL,
-  position INT NULL,
-  PRIMARY KEY (rank)
+  QB VARCHAR(50), 
+  RB1 VARCHAR(50), 
+  RB2 VARCHAR(50), 
+  WR1 VARCHAR(50), 
+  WR2 VARCHAR(50), 
+  WR3 VARCHAR(50), 
+  TE VARCHAR(50), 
+  FLEX VARCHAR(50), 
+  DST VARCHAR(50),
+  K VARCHAR(50), 
+  BN1 VARCHAR(50), 
+  BN2 VARCHAR(50),
+  BN3 VARCHAR(50), 
+  BN4 VARCHAR(50) 
 );
