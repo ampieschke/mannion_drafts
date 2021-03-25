@@ -4,14 +4,19 @@ document.addEventListener("DOMContentLoaded", (event) => {
   }
 
   //Player Search
-  const searchBtn = document.getElementById("search-player");
+  const searchBtn = document.getElementById("submit_search");
   if (searchBtn) {
-    searchBtn.addEventListener("submit", (e) => {
+    searchBtn.addEventListener("click", (e) => {
       e.preventDefault();
-      const searchedPlayer = document.getElementById("ps").value.trim();
+      const searchedPlayer = document
+        .getElementById("search_value")
+        .value.trim();
 
-      fetch(`/api/${searchedPlayer}`, {
-        method: "GET",
+      fetch(`/api/search`, {
+        method: "POST",
+        data: {
+          name: searchedPlayer,
+        },
         headers: {
           "Content-Type": "application/json",
         },
